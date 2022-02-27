@@ -25,8 +25,8 @@ const emits = defineEmits<{
 
 const movieEdit: Ref<Movie> = ref({ ...props });
 
-const response = ref(null);
-const error = ref(null);
+const response: Ref<Movie> = ref(null);
+const error: Ref<string> = ref(null);
 
 const onSubmit = () => {
   fetch("/api/editMovies", {
@@ -41,11 +41,11 @@ const onSubmit = () => {
     .catch((err) => (error.value = err));
 };
 
-const removeItem = (name, index) => {
+const removeItem = (name: string, index: number) => {
   movieEdit.value[name] = movieEdit.value.actors.filter((a, i) => i !== index);
 };
 
-const addItem = (name, val) => {
+const addItem = (name: string, val: string) => {
   movieEdit.value[name] = [...movieEdit.value.actors, val];
 };
 </script>

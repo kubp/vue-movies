@@ -17,7 +17,6 @@ interface Props {
 }
 
 const props = defineProps<Props>();
-console.log(props);
 
 const emits = defineEmits<{
   (e: "close", id: number): void;
@@ -42,7 +41,7 @@ const emits = defineEmits<{
       <div
         class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-12 sm:align-middle sm:max-w-lg sm:w-full"
       >
-        <EditFrom v-bind="props" @close="$emit('close', id)"/>
+        <EditFrom v-bind="props" @close="$emit('close', id)" />
       </div>
     </div>
   </div>

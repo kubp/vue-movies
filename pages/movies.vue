@@ -23,11 +23,11 @@ onMounted(async () => {
   getMovies();
 });
 
-const expand = (id) => {
+const expand = (id: number) => {
   detailOpenedId.value = id;
 };
 
-const openEdit = (id) => {
+const openEdit = (id: number) => {
   editOpenedId.value = id;
   movieEdit.value = movies.value.filter((m) => m.id === id)[0];
 };

@@ -14,16 +14,17 @@ interface Props {
 }
 
 const props = defineProps<Props>();
+
 const emits = defineEmits<{
   (e: "expand", id: number): void;
   (e: "openEdit", id: number): void;
 }>();
 
-const allCategories = computed(() => {
+const allCategories = computed((): string => {
   return props.categories.join(" / ");
 });
 
-const getWriter = computed(() => {
+const getWriter = computed((): string => {
   // TODO: use mapper instead - everything to array
   if (Array.isArray(props.writer)) {
     return props.writer.join(", ");

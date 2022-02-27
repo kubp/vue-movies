@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref, Ref } from "vue";
-import { Movie } from "../lib/types";
 
 interface Props {
   items?: string[];
@@ -8,12 +7,13 @@ interface Props {
 }
 
 const props = defineProps<Props>();
+
 const emits = defineEmits<{
-  (e: "removeItem", id: number): void;
+  (e: "removeItem", id: number, index: number): void;
   (e: "addItem", id: string, input: string): void;
 }>();
 
-const input = ref("");
+const input: Ref<string>= ref("");
 
 const enter = (e) => {
   emits("addItem", props.name, input.value);
