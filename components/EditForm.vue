@@ -85,13 +85,13 @@ const addItem = (name: string, val: string) => {
                   class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                   for="movie-name"
                 >
-                  Movie name
+                  Director
                 </label>
                 <input
                   class="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                   id="movie-name"
                   type="text"
-                  v-model="movieEdit.name"
+                  v-model="movieEdit.director"
                 />
               </div>
             </div>
@@ -102,11 +102,96 @@ const addItem = (name: string, val: string) => {
                   class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                   for="movie-name"
                 >
-                  Movie name
+                  Year
+                </label>
+                <input
+                  class="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                  id="movie-name"
+                  type="text"
+                  v-model="movieEdit.year"
+                />
+              </div>
+            </div>
+
+            <div class="flex flex-wrap -mx-3 mb-6">
+              <div class="w-full px-3 w-96">
+                <label
+                  class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                  for="movie-name"
+                >
+                  Runtime (min)
+                </label>
+                <input
+                  class="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                  id="movie-name"
+                  type="text"
+                  v-model="movieEdit.runtime"
+                />
+              </div>
+            </div>
+
+            <div class="flex flex-wrap -mx-3 mb-6">
+              <div class="w-full px-3 w-96">
+                <label
+                  class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                  for="movie-name"
+                >
+                  Release date
+                </label>
+                <input
+                  class="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                  id="movie-name"
+                  type="text"
+                  v-model="movieEdit.releaseDate"
+                />
+              </div>
+            </div>
+
+            <div class="flex flex-wrap -mx-3 mb-6">
+              <div class="w-full px-3 w-96">
+                <label
+                  class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                  for="movie-name"
+                >
+                  Actors
                 </label>
                 <MultiInput
                   :items="movieEdit.actors"
                   :name="'actors'"
+                  @removeItem="removeItem"
+                  @addItem="addItem"
+                />
+              </div>
+            </div>
+
+            <div class="flex flex-wrap -mx-3 mb-6">
+              <div class="w-full px-3 w-96">
+                <label
+                  class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                  for="movie-name"
+                >
+                  Writers
+                </label>
+                <MultiInput
+                  :items="movieEdit.writer"
+                  :name="'writer'"
+                  @removeItem="removeItem"
+                  @addItem="addItem"
+                />
+              </div>
+            </div>
+
+            <div class="flex flex-wrap -mx-3 mb-6">
+              <div class="w-full px-3 w-96">
+                <label
+                  class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                  for="movie-name"
+                >
+                  Categories
+                </label>
+                <MultiInput
+                  :items="movieEdit.categories"
+                  :name="'categories'"
                   @removeItem="removeItem"
                   @addItem="addItem"
                 />

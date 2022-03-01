@@ -12,8 +12,17 @@ const detailOpenedId: Ref<number> = ref(0);
 const editOpenedId: Ref<number> = ref(0);
 const movieEdit: Ref<Movie> = ref();
 
+const search: Ref<string> = ref(null);
+
 async function getMovies() {
   const response = await fetch("/api/movies");
+  const data = await response.json();
+
+  movies.value = moviesMapper(data);
+}
+
+async function getMoviesSearch() {
+  const response = await fetch(`/api/movies?searchText=${search.value}`);
   const data = await response.json();
 
   movies.value = moviesMapper(data);
@@ -43,6 +52,15 @@ const openEdit = (id: number) => {
     <div>
       <h4 class="font-bold pb-2 mt-12 border-b border-gray-200">All movies</h4>
 
+      <input
+        class="mt-5 appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+        id="movie-name"
+        type="text"
+        v-model="search"
+        placeholder="Search"
+        v-on:keydown.enter.prevent="getMoviesSearch"
+      />
+
       <div class="mt-8">
         <MovieDetail
           v-for="movie in movies"
@@ -65,7 +83,6 @@ const openEdit = (id: number) => {
     </div>
   </main>
   <div v-if="movieEdit">
-    {{ movieEdit }}
     <EditModal
       :isOpen="editOpenedId !== 0"
       @close="editOpenedId = 0"
